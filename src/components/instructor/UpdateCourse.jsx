@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 function UpdateCourse({ onUpdate }) {
   const [selectedCourseTitle, setSelectedCourseTitle] = useState("");
   const [courseData, setCourseData] = useState({
-    instructor: "",
+    cname: "",
     title: "",
     description: "",
     price: "",
@@ -38,7 +38,7 @@ function UpdateCourse({ onUpdate }) {
         // Set the course data in the form
         const course = response.data.data;
         setCourseData({
-          instructor: course.cname,
+          cname: course.cname,
           title: course.title,
           description: course.description,
           price: course.price,
@@ -48,14 +48,7 @@ function UpdateCourse({ onUpdate }) {
         console.error("Error fetching course details:", error);
       });
   };
-  //notifications
-  const showMessage = (text, isError = false) => {
-    toast.info(text, {
-      autoClose: 6000,
-      className: isError ? "toast-error" : "toast-success",
-    });
-    console.log(text);
-  };
+  
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -75,24 +68,22 @@ function UpdateCourse({ onUpdate }) {
         updatedCourse
       )
       .then((response) => {
-        if (response.data.success) {
+        toast.success("Course Updated successfully")
          console.log("Course Updated")
-         showMessage('Course updated successfully');
-          // Course updated successfully
-          onUpdate(); // You can define this callback to perform any additional actions
-         
-        } else {
-          // Handle errors or display an error message
-        }
+        
+          // onUpdate();
+       
       })
       .catch((error) => {
         console.error("Error updating course:", error);
+        toast.error("Error Updating Course")
       });
   };
 
   return (
     <>
       <h2 className="createcoursehead ml-4">Update Course</h2>
+      <ToastContainer/>
       <form onSubmit={handleUpdate} className='ml-4'>
         <div className="mb-3">
           <label htmlFor="courseTitle" className="form-label">
@@ -133,13 +124,13 @@ function UpdateCourse({ onUpdate }) {
               <input
                 type="text"
                 className="form-control"
-                id="instructor"
-                name="instructor"
-                value={courseData.instructor}
+                id="cname"
+                name="cname"
+                value={courseData.cname}
                 required
                 placeholder="Update Instructor Name"
                 onChange={(e) =>
-                  setCourseData({ ...courseData, instructor: e.target.value })
+                  setCourseData({ ...courseData, cname: e.target.value })
                 }
                 style={{width:'800px'}}
               />
@@ -207,7 +198,7 @@ function UpdateCourse({ onUpdate }) {
           </div>
         )}
       </form>
-      <ToastContainer/>
+     
     </>
   );
 }

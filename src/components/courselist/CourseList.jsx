@@ -27,9 +27,9 @@ const CourseList = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
 
-  const handleCardClick = (id,cname,title,price,description) => {
-    setSelectedCourse({ id,cname,title,price,description});
-    navigate('/coursecontent', { state: { course: {id,cname,title,price,description } } });
+  const handleCardClick = (id,cname,title,description,image,rating,price,date) => {
+    setSelectedCourse({ id,cname,title,description,image,rating,price,date});
+    navigate('/coursecontent', { state: { course: {id,cname,title,description,image,rating,price ,date} } });
   }
 
    return (
@@ -51,13 +51,14 @@ const CourseList = () => {
           <CourseListCard
           key={course._id}
           id={course.id}
-         
-          cname={course.cname}
+         cname={course.cname}
           title={course.title}
+          description={course.description}
+          image={course.image}
           rating={course.rating}
-            price={course.price}
-            description={course.description}
-            onClick={() => handleCardClick(course.id,course.cname,course.title,course.price,course.description)}
+          price={course.price}
+          date={course.date}
+            onClick={() => handleCardClick(course.id,course.cname,course.title,course.description,course.image,course.rating,course.price,course.date)}
             
           />
         ))}
@@ -68,9 +69,12 @@ const CourseList = () => {
         id={selectedCourse.id}
         cname={selectedCourse.cname}
           title={selectedCourse.title}
+          description={selectedCourse.description}
+          image={selectedCourse.image}
+          rating={selectedCourse.rating}
           
           price={selectedCourse.price}
-          description={selectedCourse.description}
+          date={selectedCourse.date}
          
         />
         

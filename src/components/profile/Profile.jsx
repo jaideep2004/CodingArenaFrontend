@@ -31,6 +31,7 @@ function Profile() {
 	const switchContent = (newContent) => {
 		setContent(newContent);
 	};
+	
 
 	return (
 		<div className='profilecontainer'>

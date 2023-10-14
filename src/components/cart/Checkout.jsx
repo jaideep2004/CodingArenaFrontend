@@ -3,6 +3,7 @@ import axios from "axios";
 import OrderItem from './OrderItem'
 import './cart.css'
 import { useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from "react-toastify";
 
 
 
@@ -50,7 +51,7 @@ const Checkout = () => {
 	 // Add the token to the headers
 	 const headers = {
 	   Authorization: token,
-	   // Other headers as needed
+	   
 	 };
 
 	 
@@ -66,7 +67,7 @@ const Checkout = () => {
 		  setEmail("");
       setTotal('') // Clear the total input
 		  setOrderPlaced(true);
-      
+      toast.success("Order Placed successfully")
         // Optionally, you can clear the cart and show a confirmation message
       })
       .catch((error) => {
@@ -81,6 +82,7 @@ const Checkout = () => {
 
   return (
     <div className='container'>
+      <ToastContainer/>
       <h2 className='checkouthead' style={{ color: "#a11afe", fontWeight: "800", marginTop: "35px", fontSize: "32px", marginBottom: "10px", marginLeft: "40px" }}>Checkout</h2>
       <div className='row'>
         <div className='col-md-8 mt-2' style={{ width: "700px", marginLeft: "35px" }}>
@@ -114,7 +116,7 @@ const Checkout = () => {
 							}}
              onClick={navigatecart}
 							>
-							Back to Shop
+							Back to Cart
 						</button>
         </div>
 

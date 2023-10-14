@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartItem from "./CartItem";
 import { Link, useNavigate } from "react-router-dom";
+import { toast,ToastContainer } from "react-toastify";
 
 
 function Cart() {
@@ -35,6 +36,7 @@ function Cart() {
 		try {
 			// Make an API request to remove the course from the backend
 			await axios.delete(`http://localhost:3001/cart/remove/${courseTitle}`);
+			toast.success("Course removed ")
 
 			// After successful removal from the backend, update the cart on the frontend
 			setCart((prevCart) => {
@@ -79,6 +81,7 @@ function Cart() {
 
 	return (
 		<div>
+			<ToastContainer/>
 			<h1
 				style={{
 					fontSize: "33px",

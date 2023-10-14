@@ -32,7 +32,9 @@ export default function ManageCourse() {
           key={course._id}
           id={course.id}
           cname={course.cname}
-          title={course.title}
+    title={course.title}
+    image={course.image}
+    
           rating={course.rating}
             price={course.price}
             description={course.description}

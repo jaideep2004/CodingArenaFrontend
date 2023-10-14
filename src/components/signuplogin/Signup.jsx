@@ -30,7 +30,7 @@ function Signup() {
   const showMessage = (text, isError = false) => {
    
     toast.info(text, {
-      autoClose: 6000, // Auto-close the notification after 5 seconds
+      autoClose: 5000, // Auto-close the notification after 5 seconds
       className: isError ? "toast-error" : "toast-success", 
     });
     // Log the message to the console

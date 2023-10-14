@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 function CreateCourse() {
 
     const [courseData, setCourseData] = useState({
-        name: "",
+        cname: "",
         title: "",
         description: "",
         price: "",

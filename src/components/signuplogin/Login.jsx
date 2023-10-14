@@ -35,7 +35,7 @@ export default function Login() {
 
       if (success) {
         
-         localStorage.setItem("jwtToken", token);
+         localStorage.setItem("jwtToken",  response.data.token);
       
          if (admin) {
           // If the user is an admin, display a message and allow course upload

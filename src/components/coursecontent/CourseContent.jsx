@@ -1,13 +1,16 @@
 import "./coursecontent.css";
 
-
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useLocation } from 'react-router-dom';
 
+
+
 export default function CourseContent() {
+
+ 
 
   const location = useLocation();
   const courseData = location.state?.course || {};
@@ -31,13 +34,15 @@ export default function CourseContent() {
 
   const addToCart = async () => {
     try {
+     
       // Send an API request to add the selected course to the cart
       const response = await axios.post('http://localhost:3001/cart/add', {
-        courseTitle: courseData.title, // Pass the course title
+        courseTitle: courseData.title,
+        
       });
   
       console.log(response.data.message);
-      toast.success('Course added to cart successfully');
+      toast.success('Course added to cart ');
       // Update the cart state locally
       setCart([...cart, courseData]);
     } catch (error) {
@@ -47,7 +52,7 @@ export default function CourseContent() {
   
   
   return (
-    <div className="mainContainer">
+    <div className="mainContainer" >
       <div className="contentBody">
         <h2 className="coursecontentheading">
           {courseData.title}
@@ -55,7 +60,7 @@ export default function CourseContent() {
        
         <div className="tab-container coursetabs1">
           <ul className="nav nav-tabs" id="testTabs" role="tablist">
-            <li className="nav-item" role="presentation">
+            <li className="nav-item mx-1" role="presentation">
               <a
                 className="nav-link active"
                 id="test1-tab"
@@ -68,7 +73,7 @@ export default function CourseContent() {
                 Course Overview
               </a>
             </li>
-            <li className="nav-item" role="presentation">
+            <li className="nav-item mx-1" role="presentation">
               <a
                 className="nav-link "
                 id="test2-tab"
@@ -81,7 +86,7 @@ export default function CourseContent() {
                 Instructor
               </a>
             </li>
-            <li className="nav-item" role="presentation">
+            <li className="nav-item mx-1" role="presentation">
               <a
                 className="nav-link "
                 id="test3-tab"
@@ -91,7 +96,7 @@ export default function CourseContent() {
                 aria-controls="test3"
                 aria-selected="false"
               >
-                What you'll Learn
+                Features
               </a>
             </li>
           </ul>
@@ -164,7 +169,7 @@ export default function CourseContent() {
                     className="fa-solid fa-calendar fa-lg "
                     style={{ color: "white" }}
                   ></i>
-                  Last updated on : dd/mm/yy
+                  Last updated on : {courseData.date}
                 </li>
                 <li>
                   {" "}
@@ -228,7 +233,8 @@ export default function CourseContent() {
 
       <div className="courseDesc">
         <div className="courseimage">
-          <img src="./images/dev.webp" alt="" />
+          <img src="./images/dev.webp" />
+          
         </div>
         <div className="desc">
           <div> Course Price : ₹ {courseData.price} </div>

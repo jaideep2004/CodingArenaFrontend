@@ -1,66 +1,70 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { BiSolidUser } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 
-
 import "react-toastify/dist/ReactToastify.css";
+import './courselist.css'
 
+export default function CourseListCard({cname,price,rating,title,image,description,date,onClick}) {
 
+	
+	const [isToastVisible, setIsToastVisible] = useState(false);
 
-export default function CourseListCard({cname,price,rating,title,description,onClick}) {
+	const handleMouseEnter = () => {
+	  if (!isToastVisible) {
+		toast.info(description, {
+		  autoClose: 3000,
+		  onClose: () => setIsToastVisible(false), // Reset the flag when the toast is closed
+		});
+		setIsToastVisible(true);
+	  }
+	};
+	
  
-
-  return (
-    <div
-      className="card  cursor-pointer  rounded-xl  mx-4 w-11/12 md:w-3/12  shadow-xl border-2 shadow-slate-300 
-       hover:shadow-pink-200 p-1 font-bold my-4 "
+	return (
+		<div
+      className='card  cursor-pointer   mx-4 w-11/12 md:w-3/12  shadow-xl border-2 shadow-slate-300  hover:shadow-pink-200 '
+      id="coursecard"
+      onClick={onClick}
+			onMouseEnter={handleMouseEnter}
+			
+>
+      <ToastContainer/>
       
-      style={{height:'410px'}}
-      onClick={onClick}>
+			<div className='img-section' id="courseimg" >
+				<img
+					src={`http://localhost:3001/uploads/${image}`}/>
+        
+      </div>
       
 
-      <div className="img-section">
+			<div className='content-section px-2'>
+				<div className='rating flex justify-between mt-1'>
+					<div className='flex item-center '>
+						<p className="ml-2" id="student"> 12 </p>
+						<BiSolidUser className=' my-1 ml-1' style={{color:'#f5ac82'}} />
+					</div>
 
-        <img src= "./images/12.jpg"
+					<div className='flex item-center  '>
+						<p className="mr-1" id="rating">{rating} </p>
+						<AiFillStar className=' my-1 mr-1' style={{color:'#f5ac82'}} />
+					</div>
+				</div>
 
-        alt="" className="rounded-xl" />
+				<div className='text-center font-bold text-xl my-3 flex  flex-col items-center justify-center '>
+					<p> {cname} </p>
+				</div>
+
+				<div className='text-center' id="coursetitle">{title}</div>
+
+				<div className='flex justify-between my-4' id="pricediv">
+					<p >Beginner Friendly </p>
+					<p> ₹ {price} </p>
+				</div>
       </div>
 
-     
-      
-        <div className="content-section px-2">
-          <div className="rating flex justify-between my-2">
-            <div className="flex item-center justify-center">
-              <p> 12 </p>
-              <BiSolidUser className="text-md my-1 mx-1" />
-            </div>
-
-            <div className="flex item-center  justify-center ">
-              <p>{rating} </p>
-              <AiFillStar className="text-md my-1 mx-1" />
-            </div>
-            
-          </div>
-
-          <div className="teacher text-center font-bold text-xl my-2 flex  flex-col items-center justify-center ">
-            
-
-            <p> {cname} </p>
-          </div>
-
-          <div className="heading  text-center font-bold text-md ">
-          {title}
-          </div>
-
-          <div className="price flex my-4 justify-between" >
-            <p className="text-sm">Beginner Friendly </p>
-            <p> ₹ {price} </p>
-          </div>
-
-        </div>
-      
-    </div>
-  );
+		</div>
+	);
 }
