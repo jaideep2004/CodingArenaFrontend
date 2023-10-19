@@ -50,6 +50,26 @@ export default function CourseContent() {
     } 
   };
   
+  const [wishlist, setWishlist] = useState([]);
+
+  const addToWishlist = async () => {
+    try {
+     
+      // Send an API request to add the selected course to the cart
+      const response = await axios.post('http://localhost:3001/wishlist/add', {
+        courseTitle: courseData.title,
+        
+      });
+  
+      console.log(response.data.message);
+      toast.success('Course added to wishlist ');
+      // Update the cart state locally
+      setWishlist([...wishlist, courseData]);
+    } catch (error) {
+      console.error('Error adding course to wishlist:', error);
+    } 
+  };
+
   
   return (
     <div className="mainContainer" >
@@ -249,7 +269,8 @@ export default function CourseContent() {
               </button>
 
 
-            <button className="b2">
+            <button className="b2"
+             onClick={addToWishlist}>
               <i class="fa-regular fa-heart"></i>
             </button>
           </div>

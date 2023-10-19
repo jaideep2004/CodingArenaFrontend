@@ -1,5 +1,5 @@
 #coursecard{
-    height: 410px;
+    height: 430px;
     width: 295px;
     margin: 15px;
    
@@ -18,6 +18,10 @@
     border-radius: 10px;
     margin: 5px auto;
 }
+#pricediv{
+    position: absolute;
+    bottom: 5px;
+}
 
 #pricediv :nth-child(1){
    margin-left: 5px;
@@ -27,7 +31,9 @@
 #pricediv  :nth-child(2){
     color: #a11afe;
     font-weight: 600;
-    margin-right: 6px;
+   
+    margin-left: 80px;
+    
 }
 
 #coursetitle{

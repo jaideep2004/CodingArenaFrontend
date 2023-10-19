@@ -19,7 +19,7 @@
     
     padding: 15px 8px;
     background-image: linear-gradient(to right,#f5ac82,#a11afe);
-    height: 450px;
+   
     width: 1200px;
     margin: 30px auto;
    
@@ -36,11 +36,12 @@
   }
   
   .courseDesc{
-   
+   margin-top: 10px;
     margin-left: 100px;
     border: 2px solid white;
     border-radius: 10px;
     width: 315px;
+    height: 410px;
     
   }
   .desc{

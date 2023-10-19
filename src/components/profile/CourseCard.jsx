@@ -6,7 +6,7 @@ export default function CourseCard({ image,title }) {
 			<div
 				className='card  cursor-pointer shadow-xl border-2 shadow-slate-300  hover:shadow-pink-200 '
 				id='coursecard'
-                style={{height:'350px'}}>
+                style={{height:'370px'}}>
 				<div className='img-section' id='courseimg'>
 					<img src={`http://localhost:3001/uploads/${image}`} />
 				</div>
@@ -16,7 +16,7 @@ export default function CourseCard({ image,title }) {
 						<p style={{color:'#a11afe'}}> {title} </p>
 					</div>
 
-					<div className='text-center' id='coursetitle'>
+					<div className='text-center' >
 						<button className="studybtn">Study</button>
 					</div>
 				</div>

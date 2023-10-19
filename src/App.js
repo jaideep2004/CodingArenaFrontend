@@ -14,51 +14,54 @@ import { ToastContainer,toast } from 'react-toastify';
 import Checkout from './components/cart/Checkout';
 import Admin from './components/instructor/Admin'
 
+import { CartProvider } from './components/cart/CartContext';
 
 
 
 function App() {
-  
+ 
 
+  
   
   return (
   <BrowserRouter>
 
-  
+  <CartProvider>
 <Header/>
 
 <Routes>
 
-  <Route path="header" element={<Header  />} />  
 
-  <Route path="signup" element={<Signup/>} /> 
+
+  <Route path="header" element={<Header  />} />
+
+  <Route path="signup" element={<Signup/>}  />
   
-  <Route path="verifyotp" element={<VerifyOtp/>} /> 
+  <Route path="verifyotp" element={<VerifyOtp/>} />
    
-  <Route path="login" element={<Login/>} />   
+  <Route path="login" element={<Login/>} />
 
-  <Route path="courselist" element={<CourseList/>} />
+          <Route path="courselist" element={<CourseList/>} />
+         
 
-  <Route path="profile" element={<Profile />} />  
+  <Route path="profile" element={<Profile />} />
 
-  <Route path="coursecontent" element={<CourseContent/>} /> 
+  <Route path="coursecontent" element={<CourseContent/>} />
 
-  <Route path="admin" element={<Admin/>} /> 
+  <Route path="admin" element={<Admin/>} />
+  
+        
+  <Route path="checkout" element={<Checkout />} />
+
+        <Route path="cart" element={<Cart />} />
   
 
+          <Route path="/" element={<Main/>} />
+          
   
-
   
-  <Route path="cart" element={<Cart/>} />  
-  <Route path="checkout" element={<Checkout/>} />  
-
-  
-
-  <Route path="/" element={<Main/>} />   
-  
-
    </Routes>
-   
+   </CartProvider>
    
    </BrowserRouter>
   
@@ -67,3 +70,5 @@ function App() {
 }
 
 export default App
+
+

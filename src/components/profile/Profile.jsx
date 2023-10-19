@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import EditProfile from "./EditProfile";
 import MyCourses from "./MyCourses";
+import Wishlist from "./Wishlist";
 
 function Profile() {
 	const navigate = useNavigate();
@@ -62,12 +63,14 @@ function Profile() {
 								</a>
 						</li>
 						<li className='navsidebaropt'>
-							<a className=' sidebaropt'>
-								<i
-									class='fa-solid fa-heart fa-lg '
-									style={{ color: "white" }}></i>
-								Wishlist
-							</a>
+						<a
+									className={`sidebaropt ${
+										content === "wishlist" ? "active" : ""
+									}`}
+									onClick={() => switchContent("wishlist")}>
+										<i class="fa-solid fa-heart fa-lg "></i>
+									WishList
+								</a>
 						</li>
 						<li className='navsidebaropt'>
 							<a className=' sidebaropt' onClick={navigatecart}>
@@ -101,6 +104,7 @@ function Profile() {
 			<div className='maincontent'>
 					{content === "editprofile" && <EditProfile />}
 					{content === "mycourses" && <MyCourses />}
+					{content === "wishlist" && <Wishlist />}
 					
 				</div>
 			

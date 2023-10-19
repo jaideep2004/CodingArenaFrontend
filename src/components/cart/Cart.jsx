@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartItem from "./CartItem";
 import { Link, useNavigate } from "react-router-dom";
-import { toast,ToastContainer } from "react-toastify";
-
+import { toast, ToastContainer } from "react-toastify";
+import { useCart } from "./CartContext";
 
 function Cart() {
 	const [cart, setCart] = useState([]);
 	const [total, setTotal] = useState(0);
-	
 
 	useEffect(() => {
 		// Fetch the list of courses in the cart from your API
@@ -27,21 +26,20 @@ function Cart() {
 			.catch((error) => {
 				console.error("Error fetching cart data:", error);
 			});
-			
-		
 	}, []);
 
-	
 	const removeFromCart = async (courseTitle) => {
 		try {
 			// Make an API request to remove the course from the backend
 			await axios.delete(`http://localhost:3001/cart/remove/${courseTitle}`);
-			toast.success("Course removed ")
+			toast.success("Course removed ");
 
 			// After successful removal from the backend, update the cart on the frontend
 			setCart((prevCart) => {
 				// Filter out the removed item
-				const updatedCart = prevCart.filter((course) => course.title !== courseTitle);
+				const updatedCart = prevCart.filter(
+					(course) => course.title !== courseTitle
+				);
 
 				// Recalculate the total based on the updatedCart
 				const cartTotal = updatedCart.reduce(
@@ -65,23 +63,22 @@ function Cart() {
 		navigate("/courselist");
 	};
 
+	const { clearCart } = useCart();
+
 	const navigatecheckout = () => {
 		// Check if the user is authenticated (token is available)
-		const token = localStorage.getItem('jwtToken');
-		
+		const token = localStorage.getItem("jwtToken");
+
 		if (token) {
-		 
-		  navigate("/checkout");
+			navigate("/checkout");
 		} else {
-		  alert("Please log in to continue to checkout.");
+			alert("Please log in to continue to checkout.");
 		}
-	  };
-
-
+	};
 
 	return (
 		<div>
-			<ToastContainer/>
+			<ToastContainer />
 			<h1
 				style={{
 					fontSize: "33px",
@@ -90,16 +87,15 @@ function Cart() {
 					marginTop: "35px",
 					marginLeft: "70px",
 				}}>
-					
 				Shopping Cart
 			</h1>
 			<div className='flex mt-2'>
 				{/* cart section */}
 
-				<div className='flex flex-col  p-4  ' style={{ marginLeft: "40px" ,width:'650px'}}>
-				
+				<div
+					className='flex flex-col  p-4  '
+					style={{ marginLeft: "40px", width: "650px" }}>
 					<ul className='flex flex-col divide-y divide-gray-700'>
-						
 						{cart.length === 0 ? (
 							<p>Your cart is empty.</p>
 						) : (
@@ -111,7 +107,6 @@ function Cart() {
 										title={course.title}
 										course={course}
 										removeFromCart={removeFromCart}
-										
 									/>
 								))}
 							</div>
@@ -152,10 +147,11 @@ function Cart() {
 							<div class='text-gray-700 font-bold py-1'>Total: ₹ {total} </div>
 
 							<div class='text-gray-600 py-1'>Original Price ₹ {total}</div>
-							
+
 							<div classname='text-600'>
-							<i class="fa-solid fa-check"></i>
-								COUPON123 is Applied </div>
+								<i class='fa-solid fa-check'></i>
+								COUPON123 is Applied{" "}
+							</div>
 
 							<div class='mt-4 flex items-center'>
 								<input
@@ -188,12 +184,8 @@ function Cart() {
 					</div>
 				</div>
 			</div>
-			
-
 		</div>
 	);
-
-	
 }
 
 export default Cart;

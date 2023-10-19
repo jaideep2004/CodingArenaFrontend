@@ -10,7 +10,7 @@ function Header() {
 
 
   return (
-    <header className="shadow ">
+    <header className="shadow-sm ">
       <Link to="/">
       <div className="logo">
         <img src="./images/logo3.png" alt="" />

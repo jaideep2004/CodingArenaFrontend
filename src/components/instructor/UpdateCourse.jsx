@@ -84,7 +84,7 @@ function UpdateCourse({ onUpdate }) {
     <>
       <h2 className="createcoursehead ml-4">Update Course</h2>
       <ToastContainer/>
-      <form onSubmit={handleUpdate} className='ml-4'>
+      <form onSubmit={handleUpdate} className='ml-5'>
         <div className="mb-3">
           <label htmlFor="courseTitle" className="form-label">
             Select a course to Update

@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
+
   
 
 function Signup() {
@@ -73,7 +74,7 @@ function Signup() {
   };
 
   return (
-    <div className="signup">
+    <div className="signup  ">
       <h2 className="signheading" >Sign Up</h2>
       <form>
         <div className="form-group">

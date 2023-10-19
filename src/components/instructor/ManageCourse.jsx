@@ -4,6 +4,8 @@ import axios from "axios";
 
 import "react-toastify/dist/ReactToastify.css";
 import CourseListCard from "../courselist/CourseListCard";
+import { ToastContainer, toast } from "react-toastify";
+import AdminCourseCard from "./AdminCourseCard";
 
 export default function ManageCourse() {
 
@@ -20,15 +22,37 @@ export default function ManageCourse() {
       });
   }, []);
 
+  
+
+  const removeFromList = async (title) => {
+		try {
+			// Make an API request to remove the course from the backend
+			await axios.delete(`http://localhost:3001/allcourses/remove/${title}`);
+      toast.success("Course removed ")
+      
+      setCourses((prevList) => {
+				// Filter out the removed item
+				const updatedList = prevList.filter((course) => course.title !== title);
+
+				return updatedList;
+			});
+				
+		} catch (error) {
+      console.error("Error removing course ", error);
+      toast.error("Error removing course ")
+		}
+	};
+
+
   return (
 
     <>
-     <h2 className="createcoursehead" style={{marginLeft:'30px'}}>Uploaded Courses</h2>
-    <div className="cards flex  mt-2 flex-wrap  md:flex-row flex-col items-center " >
+     <h2 className="createcoursehead ml-4" >Uploaded Courses</h2>
+    <div className="cards flex ml-5 mt-2 flex-wrap  md:flex-row flex-col items-center " >
 
       
 {courses.map((course) => (
-          <CourseListCard
+          <AdminCourseCard
           key={course._id}
           id={course.id}
           cname={course.cname}
@@ -36,12 +60,14 @@ export default function ManageCourse() {
     image={course.image}
     
           rating={course.rating}
-            price={course.price}
-            description={course.description}
+    price={course.price}
+    removeFromList={removeFromList}
+           
            
           />
         ))
         }
+        <ToastContainer/>
     </div>
     </>
   )

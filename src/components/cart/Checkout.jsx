@@ -67,8 +67,8 @@ const Checkout = () => {
 		  setEmail("");
       setTotal('') // Clear the total input
 		  setOrderPlaced(true);
-      toast.success("Order Placed successfully")
-        // Optionally, you can clear the cart and show a confirmation message
+        toast.success("Order Placed successfully")
+       
       })
       .catch((error) => {
         console.error("Error placing order:", error);
