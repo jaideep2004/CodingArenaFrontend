@@ -43,10 +43,10 @@ export default function Wishlist() {
 	return (
 		<div>
 			<h2 className='mycoursehead '>Wishlist</h2>
-			<div className=" mt-3">
-				<ul className='flex flex-col '>
+			<div className=" wishitemcontainer">
+				<ul className='flex flex-col  '>
 					{wishlist.length === 0 ? (
-						<p>Your wishlist is empty.</p>
+						<p >Your wishlist is empty.</p>
 					) : (
 						<div>
 							{wishlist.map((course) => (

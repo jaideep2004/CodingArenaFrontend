@@ -22,6 +22,7 @@
 }
 .navsidebaropt{
     padding: 10px;
+    transition: 0.4s;
    
 } 
 .navsidebaropt>a>i{
@@ -42,9 +43,11 @@
     background-color: #f5ac82;
 }
 
-.profilepiccontain{
-    display: flex;
-   
+.profilepic{
+    width: 120px;
+    height: 120px;
+   margin: 5px auto;
+  
 }
 
 .usernamediv{
@@ -52,22 +55,20 @@
    font-size: 19px;
    font-weight: 600;
   margin-left: 20px;
-  margin-top: 50px;
+  margin-top: 6px;
 
 }
 .mycoursehead{
     color: #f5ac82;
     font-weight: 700;
-    /* margin-top: 30px;
-   margin-left: 280px;
-    margin-bottom: 12px; */
+    
     margin-top: 35px;
     margin-left: 400px;
     font-size: 32px;
 }
 #editprofile{
     margin-top: 35px;
-    margin-left: 380px;
+   
 }
 .studybtn{
     position: absolute;
@@ -91,8 +92,19 @@
     margin-top: 15px;
     margin-left: 30px;
 }
-
-
+.wishitemcontainer{
+    margin-top: 15px;
+    width: 850px;
+}
+.wishitemcontainer>ul>p{
+    font-size: 22px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.editidform{
+   margin-left: 30px;
+   margin-top: 35px;
+}
 
 
 /* admin */
@@ -109,6 +121,7 @@
 .navsidebaropt2{
     padding: 10px 5px;
     margin-top: 20px;
+    transition: 0.4s;
 }
 .navsidebaropt2>a>i{
     margin-right: 15px;

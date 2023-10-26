@@ -4,9 +4,12 @@ import {ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "../header/AuthContext";
 
 export default function Login() {
+
+  const { setIsLoggedIn } = useAuth();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,32 +31,38 @@ export default function Login() {
         console.log(text);
       }
 
+
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:3001/login", formData);
-      const { success, token,admin, error } = response.data;
-
+      const { success, token, admin, error } = response.data;
+  
       if (success) {
-        
-         localStorage.setItem("jwtToken",  response.data.token);
-      
-         if (admin) {
-          // If the user is an admin, display a message and allow course upload
+        localStorage.setItem("jwtToken", response.data.token);
+        setIsLoggedIn(true);
+  
+        if (admin) {
+          // If the user is an admin, redirect to /admin
           showMessage("Logged in as admin. You can now upload courses.");
-          
+          setTimeout(() => {
+            navigate("/admin");
+          }, 3000);
         } else {
-          // If the user is not an admin, display a regular login success message
+          // If the user is not an admin, redirect to /profile
           showMessage("Login successful!");
-          
+          setTimeout(() => {
+            navigate("/profile");
+          }, 3000);
         }
+  
         // Reset the input fields to empty strings
         setFormData({
           email: "",
           password: "",
         });
-         // Log the JWT token to the console
-      console.log("JWT Token:", token);
-
+  
+        // Log the JWT token to the console
+        console.log("JWT Token:", token);
       } else {
         // Display an error toast
         showMessage(error);
@@ -62,9 +71,8 @@ export default function Login() {
       // Handle network or other errors
       console.error(error);
     }
-    
   };
-
+  
   return (
     <div className="login">
       <h2 className="signheading">Login</h2>

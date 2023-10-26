@@ -15,6 +15,7 @@ export default function CourseListCard({
 	image,
 	description,
 	date,
+	pdf, video,
 	onClick,
 	
 }) {
@@ -38,6 +39,7 @@ export default function CourseListCard({
 			id='coursecard'
 			onClick={onClick}
 			onMouseEnter={() => setIsHovered(true)}
+			
 			onMouseLeave={() => setIsHovered(false)}>
 			<ToastContainer />
 

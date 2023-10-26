@@ -25,6 +25,10 @@
     border: none;
     border-radius: 10px;
     font-weight: 600;
+    transition: 0.5s;
+  }
+  .hbutton:hover{
+    background-color: #a11afe;
   }
   
   .hero-heading {

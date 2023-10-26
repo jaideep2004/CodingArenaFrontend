@@ -15,16 +15,19 @@ function Profile() {
 		navigate("/cart")
 	}
 
-	const handleLogout = () => {
-		// Remove the JWT token from localStorage
-		localStorage.removeItem("jwtToken");
-		console.log("Logged Out");
-		toast.success("Logged Out");
+	
 
-		setTimeout(() => {
-			navigate("/");
-		}, 2000);
-	};
+	// const handleLogout = () => {
+	// 	// Remove the JWT token from localStorage
+	// 	localStorage.removeItem("jwtToken");
+		
+	// 	console.log("Logged Out");
+	// 	toast.success("Logged Out");
+
+	// 	setTimeout(() => {
+	// 		navigate("/");
+	// 	}, 2000);
+	// };
 
 	const [content, setContent] = useState("editprofile"); // Default content is the dashboard
 
@@ -75,8 +78,7 @@ function Profile() {
 						<li className='navsidebaropt'>
 							<a className=' sidebaropt' onClick={navigatecart}>
 								<i
-									class='fa-solid fa-cart-shopping fa-lg'
-									style={{ color: "white" }}></i>
+									class='fa-solid fa-cart-shopping fa-lg'></i>
 								My Cart
 							</a>
 						</li>
@@ -84,19 +86,11 @@ function Profile() {
 						<li className='navsidebaropt'>
 							<a className=' sidebaropt'>
 								<i
-									class='fa-solid fa-chalkboard-user fa-lg'
-									style={{ color: "white" }}></i>
+									class='fa-solid fa-chalkboard-user fa-lg'></i>
 								Tests
 							</a>
 						</li>
-						<li className='navsidebaropt'>
-							<a className=' sidebaropt' onClick={handleLogout}>
-								<i
-									class='fa-solid fa-right-from-bracket  fa-lg'
-									style={{ color: "white" }}></i>
-								Logout
-							</a>
-						</li>
+						
 					</ul>
 				</div>
 			</nav>

@@ -39,7 +39,9 @@ const CourseList = () => {
 		image,
 		rating,
 		price,
-		date
+		date,
+		pdf,
+		video,
 	) => {
 		setSelectedCourse({
 			id,
@@ -50,58 +52,82 @@ const CourseList = () => {
 			rating,
 			price,
 			date,
+			pdf,
+		video,
 		});
 		navigate("/coursecontent", {
 			state: {
-				course: { id, cname, title, description, image, rating, price, date },
+				course: { id, cname, title, description, image, rating, price, date,pdf,video },
 			},
 		});
 	};
 
 	return (
 		<>
-			
-<div className="courses mx-auto w-10/12">
-        <center>
-          <h1 style={{ color: '#a11afe', fontWeight: '800', marginTop: '35px', fontSize: '33px' }}>
-            Explore Our Top Courses
-          </h1>
-        </center>
-        <div className="cards flex justify-center my-5 flex-wrap md:flex-row flex-col items-center ">
-          {isLoading ? ( // Display loading spinner when isLoading is true
-            <LoadingSpinner />
-          ) : (
-            courses.map((course) => (
-              <CourseListCard
-                key={course._id}
-                id={course.id}
-                cname={course.cname}
-                title={course.title}
-                description={course.description}
-                image={course.image}
-                rating={course.rating}
-                price={course.price}
-                date={course.date}
-                onClick={() => handleCardClick(course.id, course.cname, course.title, course.description, course.image, course.rating, course.price, course.date)}
-              />
-            ))
-          )}
+			<div className='courses mx-auto w-10/12'>
+				<center>
+					<h1
+						style={{
+							color: "#a11afe",
+							fontWeight: "800",
+							marginTop: "35px",
+							fontSize: "33px",
+						}}>
+						Explore Our Top Courses
+					</h1>
+				</center>
+				<div className='cards flex justify-center my-5 flex-wrap md:flex-row flex-col items-center '>
+					{isLoading ? ( // Display loading spinner when isLoading is true
+						<LoadingSpinner />
+					) : (
+						courses.map((course) => (
+							<CourseListCard
+								key={course._id}
+								id={course.id}
+								cname={course.cname}
+								title={course.title}
+								description={course.description}
+								image={course.image}
+								rating={course.rating}
+								price={course.price}
+								date={course.date}
+								pdf={course.pdf}
+								video={course.video}
+								onClick={() =>
+									handleCardClick(
+										course.id,
+										course.cname,
+										course.title,
+										course.description,
+										course.image,
+										course.rating,
+										course.price,
+										course.date,
+										course.pdf,
+										course.video
+									)
+								}
+							/>
+						))
+					)}
 
-          {selectedCourse && (
-            <CourseContent
-              key={selectedCourse._id}
-              id={selectedCourse.id}
-              cname={selectedCourse.cname}
-              title={selectedCourse.title}
-              description={selectedCourse.description}
-              image={selectedCourse.image}
-              rating={selectedCourse.rating}
-              price={selectedCourse.price}
-              date={selectedCourse.date}
-            />
-          )}
-        </div>
-      </div>
+					{selectedCourse && (
+						<CourseContent
+							key={selectedCourse._id}
+							id={selectedCourse.id}
+							cname={selectedCourse.cname}
+							title={selectedCourse.title}
+							description={selectedCourse.description}
+							image={selectedCourse.image}
+							rating={selectedCourse.rating}
+							price={selectedCourse.price}
+							date={selectedCourse.date}
+							pdf={selectedCourse.pdf}
+							video={selectedCourse.video}
+						/>
+					)}
+				</div>
+			</div>
 		</>
 	);
 };

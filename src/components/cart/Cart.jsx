@@ -3,7 +3,7 @@ import axios from "axios";
 import CartItem from "./CartItem";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { useCart } from "./CartContext";
+
 
 function Cart() {
 	const [cart, setCart] = useState([]);
@@ -63,8 +63,7 @@ function Cart() {
 		navigate("/courselist");
 	};
 
-	const { clearCart } = useCart();
-
+	
 	const navigatecheckout = () => {
 		// Check if the user is authenticated (token is available)
 		const token = localStorage.getItem("jwtToken");
