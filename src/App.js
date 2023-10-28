@@ -21,6 +21,7 @@ import { CartProvider } from "./components/cart/CartContext";
 function App() {
 	const [cart, setCart] = useState([]);
 	return (
+		
 		<CartProvider>
 			<AuthProvider>
 		<BrowserRouter>
@@ -53,7 +54,7 @@ function App() {
 			</BrowserRouter>
 			</AuthProvider>
 			</CartProvider>
-
+			
 			
 	);
 }

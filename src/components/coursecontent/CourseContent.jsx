@@ -8,13 +8,13 @@ import { useAuth } from "../header/AuthContext";
 
 
 
-export default function CourseContent() {
+export default function CourseContent({ course }) {
 	const location = useLocation();
 	const courseData = location.state?.course || {};
-
+	
 	const [courses, setCourses] = useState(null);
 	const [cart, setCart] = useState([]);
-
+	
 	useEffect(() => {
 		// Fetch available courses from the server
 		axios

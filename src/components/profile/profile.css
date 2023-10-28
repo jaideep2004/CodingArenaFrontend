@@ -43,21 +43,6 @@
     background-color: #f5ac82;
 }
 
-.profilepic{
-    width: 120px;
-    height: 120px;
-   margin: 5px auto;
-  
-}
-
-.usernamediv{
-    color: #a11afe;
-   font-size: 19px;
-   font-weight: 600;
-  margin-left: 20px;
-  margin-top: 6px;
-
-}
 .mycoursehead{
     color: #f5ac82;
     font-weight: 700;
@@ -66,9 +51,24 @@
     margin-left: 400px;
     font-size: 32px;
 }
+
+.usernamediv{
+    color: #f5ac82;
+    font-size: 19px;
+    font-weight: 600;
+    width: 150px;
+    margin: 6px auto;
+    
+}
 #editprofile{
     margin-top: 35px;
-   
+    
+}
+.profilepic{
+    width: 120px;
+    height: 120px;
+   margin: 5px auto;
+  
 }
 .studybtn{
     position: absolute;

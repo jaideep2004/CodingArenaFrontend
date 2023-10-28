@@ -1,78 +1,124 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-export default function EditProfile() {
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
+import jwtDecode from "jwt-decode";
+import { useAuth } from "../header/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+function EditProfile() {
+	const [user, setUser] = useState({ email: "", username: "" });
+	const [newUsername, setNewUsername] = useState("");
+	const [newEmail, setNewEmail] = useState("");
+	const [isEditing, setIsEditing] = useState(false);
 
 	useEffect(() => {
+		// Get the JWT token from local storage (you might want to handle this more securely)
 		const token = localStorage.getItem("jwtToken");
 
-		// Add the token to the headers
-		const headers = {
-			Authorization: token,
+		if (token) {
+			// Decode the token to get user data
+			const decoded = jwtDecode(token);
+			const { email, username } = decoded.user;
+
+			// Update the user state
+			setUser({ email, username });
+		}
+	}, []);
+	const handleEditClick = () => {
+		setIsEditing(true);
+	};
+	const navigate = useNavigate();
+
+	const { setIsLoggedIn } = useAuth();
+
+	const handleSaveClick = (e) => {
+		e.preventDefault();
+
+		// Prepare the updated user data
+		const updatedUserData = {
+			username: newUsername,
+			email: newEmail,
 		};
 
-		// Send a GET request to fetch the user's profile data
+		// Send a PUT request to update the user's information
 		axios
-			.get("http://localhost:3001/userprofile", { headers })
+			.put(
+				`http://localhost:3001/users/updateprofile/${user.email}`,
+				updatedUserData
+			)
 			.then((response) => {
-				const userData = response.data;
-				setUsername(userData.username);
-				setEmail(userData.email);
+				const { email, username } = response.data.updatedUser;
+				setUser({ email, username });
+				setIsEditing(false);
+				toast.success("Profile Updated successfully");
+				handleLogout();
 			})
 			.catch((error) => {
-				console.error("Error fetching user profile data:", error);
+				console.error("Error updating profile:", error);
+				toast.error("Error Updating Profile");
 			});
-	});
+	};
+	const handleLogout = () => {
+		localStorage.removeItem("jwtToken");
+		setIsLoggedIn(false);
+		toast.success("Logged Out! Login with new credentials");
+	};
 
 	return (
 		<div id='editprofile'>
 			<div className='profilepic'>
 				<img src='./images/profile.webp' alt='' />
-				<div className='usernamediv'>Hello, {username}</div>
+			</div>
+			<div className='usernamediv'>
+				Welcome Back,
+				<br />
+				{user.username}
+				<br />
+				{user.email}{" "}
 			</div>
 
-			<div className='editidform'>
-				<form>
-					<div>
-						
-						<div className='mb-3'>
-							<label htmlFor='instructor' className='createcourselabel'>
-								Name
-							</label>
-							<input
-								type='text'
-								className='form-control'
-								id='cname'
-								name='cname'
-								required
-								placeholder='Update Username'
-								style={{ width: "800px" }}
-							/>
-						</div>
+			<form onSubmit={handleSaveClick} className='ml-6'>
+				<div className='mb-3'>
+					<label htmlFor='newUsername' className='createcourselabel'>
+						New Username
+					</label>
+					<input
+						className='form-control'
+						type='text'
+						id='newUsername'
+						name='newUsername'
+						value={newUsername}
+						onChange={(e) => setNewUsername(e.target.value)}
+						required
+						style={{ width: "800px" }}
+						placeholder='Update Username'
+					/>
+				</div>
+				<div className='mb-3'>
+					<label htmlFor='newEmail' className='createcourselabel'>
+						New Email
+					</label>
+					<input
+						className='form-control'
+						type='email'
+						id='newEmail'
+						name='newEmail'
+						value={newEmail}
+						onChange={(e) => setNewEmail(e.target.value)}
+						required
+						style={{ width: "800px" }}
+						placeholder='Update Email'
+					/>
+				</div>
+				<button type='submit' className='coursebtn'>
+					Save
+				</button>
+			</form>
 
-						<div className='mb-3'>
-							<label htmlFor='title' className='createcourselabel'>
-								Email
-							</label>
-							<input
-								type='text'
-								className='form-control'
-								id='title'
-								name='title'
-								required
-								placeholder='Update Email'
-								style={{ width: "800px" }}
-							/>
-						</div>
-
-						<button type='submit' className='coursebtn'>
-							Update Profile
-						</button>
-					</div>
-				</form>
-			</div>
+			<ToastContainer />
 		</div>
 	);
 }
+
+export default EditProfile;

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CourseCard({ image,title }) {
+export default function CourseCard({ image,title,onClick, }) {
 	return (
 		<div>
 			<div
@@ -17,7 +17,7 @@ export default function CourseCard({ image,title }) {
 					</div>
 
 					<div className='text-center' >
-						<button className="studybtn">Study</button>
+						<button className="studybtn" onClick={onClick}>Study</button>
 					</div>
 				</div>
 			</div>

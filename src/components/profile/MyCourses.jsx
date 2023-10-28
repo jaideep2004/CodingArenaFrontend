@@ -23,6 +23,7 @@ export default function MyCourses() {
 			});
 	}, []);
 
+
 	return (
 		<div>
 			<h2 className='mycoursehead '>My Courses</h2>
@@ -33,9 +34,11 @@ export default function MyCourses() {
 						key={order._id.$oid}
 						image={order.cart[0].image}
 						title={order.cart[0].title}
-						
+												
 					/>
 				))}
+
+				
 			</div>
 		</div>
 	);

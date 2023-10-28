@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import CourseListCard from "./CourseListCard";

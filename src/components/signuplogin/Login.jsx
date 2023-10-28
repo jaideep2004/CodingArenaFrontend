@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../header/AuthContext";
 
+
 export default function Login() {
 
+  
   const { setIsLoggedIn } = useAuth();
+  
+ 
 
   const [formData, setFormData] = useState({
     email: "",
@@ -35,11 +39,13 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:3001/login", formData);
-      const { success, token, admin, error } = response.data;
+      const { success, token, admin, error,user } = response.data;
   
       if (success) {
         localStorage.setItem("jwtToken", response.data.token);
+        
         setIsLoggedIn(true);
+        console.log(response.data)
   
         if (admin) {
           // If the user is an admin, redirect to /admin
@@ -63,6 +69,8 @@ export default function Login() {
   
         // Log the JWT token to the console
         console.log("JWT Token:", token);
+       
+       
       } else {
         // Display an error toast
         showMessage(error);
@@ -72,6 +80,7 @@ export default function Login() {
       console.error(error);
     }
   };
+  
   
   return (
     <div className="login">
