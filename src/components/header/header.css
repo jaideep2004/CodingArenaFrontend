@@ -106,6 +106,11 @@ button.button:hover {
 /* responsive */
 
 @media screen and (max-width: 600px) {
+
+body{
+	width: fit-content;
+}
+
 	.menu-item {
 		display: none;
 	}
@@ -119,9 +124,10 @@ button.button:hover {
   }
 	#mobilemenuicon {
     display: block;
-		position: absolute;
-		top: 70px;
-		right: 35px;
+	margin-left: 345px;
+		/* position: absolute; */
+		/* top: 70px;
+		right: 35px; */
 		cursor: pointer;
     transition: 0.3s;
    
@@ -140,15 +146,17 @@ button.button:hover {
     font-size: 18px;
 		border: none;
 		border-radius: 5px;
-		margin: 40px auto;
-		width: 500px;
+		/* margin-top: 35px; */
+		/* margin: 40px auto; */
+		width: 515px;
 		padding: 10px;
 		background-color: #a11afe;
 		position: absolute;
-		top: 70px;
-		right: 30px;
-		display: flex;
-		flex-direction: column;
+		top: 115px;
+		left: 50px;
+		/* right: 10px; */
+		display: block;
+		/* flex-direction: column; */
 		box-shadow: 0px 5px 5px #f5ac82 ;
 		
     

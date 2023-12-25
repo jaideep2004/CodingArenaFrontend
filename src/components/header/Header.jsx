@@ -30,13 +30,13 @@ function Header() {
 			navigate("/");
 		}, 2000);
 	};
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
 
-  const [isIconVisible, setIsIconVisible] = useState(true);
+  const [isIconVisible, setIsIconVisible] = useState(false);
 
   const toggleIcon = () => {
     setIsIconVisible(!isIconVisible);
@@ -64,8 +64,8 @@ function Header() {
 
 			{/* mobile menu icon */}
 			<div onClick={handleButtonClick} >
-				<i id='mobilemenuicon' class='fa-solid fa-bars fa-xl' ></i>
-				{isIconVisible ? <i id='mobilemenuicon' class='fa-solid fa-bars fa-xl'></i> : <i id='mobilemenuicon' class='fa-solid fa-circle-xmark fa-2xl'></i>}
+				{/* <i id='mobilemenuicon' class='fa-solid fa-bars fa-xl' ></i> */}
+				{isIconVisible ? <i id='mobilemenuicon' class='fa-solid fa-circle-xmark fa-2xl'></i> : <i id='mobilemenuicon' class='fa-solid fa-bars fa-2xl'></i>}
 </div>
 			
 			
