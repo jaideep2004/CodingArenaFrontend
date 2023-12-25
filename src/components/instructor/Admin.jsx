@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CreateCourse from "./CreateCourse";
 import UpdateCourse from "./UpdateCourse";
 import ManageCourse from "./ManageCourse";
+import '../header/header.css'
 
 function Admin() {
 	const [content, setContent] = useState("createCourse"); // Default content is the dashboard
@@ -17,7 +18,7 @@ function Admin() {
 	};
 
 	return (
-		<div className=' '>
+		<div >
 			<div className='flex ' >
 				{/* Sidebar */}
 				<nav

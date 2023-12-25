@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 import CourseSlider from "./CourseSlider";
-
+import Footer from "../footer/Footer";
+import "../header/header.css"
 
 
 function Main() {
@@ -60,6 +61,7 @@ function Main() {
           </div>
           <div className="service">
             <i class="fa-solid fa-book fa-beat fa-xl"></i>
+            
             <h3 className="cardheading">Test Preparation</h3>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
@@ -68,12 +70,14 @@ function Main() {
           </div>
         </div>
       </div>
+      
       <div className="featured" onClick={navigatecourses}>
         <center>
           <h1 className="featuredheading">Our Featured Courses</h1>
           </center>
         <CourseSlider/>
       </div>
+      <Footer/>
     </>
   );
 }

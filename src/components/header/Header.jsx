@@ -9,12 +9,12 @@ import axios from "axios";
 import { useCart } from "../cart/CartContext";
 
 function Header() {
-  const { state, fetchCartItemCount } = useCart();
-  const { cartItemCount } = state;
+	const { state, fetchCartItemCount } = useCart();
+	const { cartItemCount } = state;
 
-  useEffect(() => {
-    fetchCartItemCount();
-  }, [fetchCartItemCount]);
+	useEffect(() => {
+		fetchCartItemCount();
+	}, [fetchCartItemCount]);
 
 	const { isLoggedIn } = useAuth();
 	const { setIsLoggedIn } = useAuth();
@@ -30,22 +30,92 @@ function Header() {
 			navigate("/");
 		}, 2000);
 	};
+	const [isVisible, setIsVisible] = useState(true);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  const [isIconVisible, setIsIconVisible] = useState(true);
+
+  const toggleIcon = () => {
+    setIsIconVisible(!isIconVisible);
+	};
+
+	const handleButtonClick = () => {
+		toggleVisibility();
+		toggleIcon();
+		// Add any other functions you want to call here
+	  };
+	
+	  const handleLinkClick = () => {
+		// Close the menu when a link is clicked
+		setIsVisible(false);
+	  };
 
 	return (
 		<header className='shadow-sm'>
-			<Link to='/'>
+			<Link to='/' >
 				<div className='logo'>
 					<img src='./images/logo3.png' alt='' />
 					<div className='logoname'>CODING ARENA</div>
 				</div>
 			</Link>
 
+			{/* mobile menu icon */}
+			<div onClick={handleButtonClick} >
+				<i id='mobilemenuicon' class='fa-solid fa-bars fa-xl' ></i>
+				{isIconVisible ? <i id='mobilemenuicon' class='fa-solid fa-bars fa-xl'></i> : <i id='mobilemenuicon' class='fa-solid fa-circle-xmark fa-2xl'></i>}
+</div>
+			
+			
+			 {isVisible && <div className='mobilemenu'>
+				<ul className='mobilemenuitems'>
+					<li onClick={handleLinkClick}><Link to='/'>HOME</Link></li>
+					<li onClick={handleLinkClick}><Link to='/courselist'>COURSES</Link></li>
+					<li onClick={handleLinkClick}><Link to='admin'>INSTRUCTOR</Link></li>
+					<li onClick={handleLinkClick}><Link to='/cart'>
+							CART
+							{cartItemCount > 0 && (
+								<span className='cart-counter'>{cartItemCount}</span>
+							)}
+						</Link></li>
+					<div className='mobilebuttons'>
+					{isLoggedIn ? (
+						<>
+							<Link to='profile'>
+								<img
+									className='headerprofile'
+									src='./images/profile.webp'
+									alt='Profile'
+								/>
+							</Link>
+							<button onClick={handleLogout} className='button'>
+								Logout
+							</button>
+						</>
+					) : (
+						<>
+							<Link to='signup' onClick={handleLinkClick}>
+								<button className='mobbutton'>Sign Up</button>
+							</Link>
+							<Link to='login' onClick={handleLinkClick}>
+								<button className='mobbutton'>Login</button>
+							</Link>
+						</>
+					)}
+				</div>
+				</ul>
+				
+			</div>}
+
+			{/* laptop menu */}
 			<nav>
 				<ul className='menu'>
 					<li className='menu-item'>
 						<Link to='/'>HOME</Link>
 					</li>
-					<li className='menu-item dropdown'>
+					<li className='menu-item '>
 						<Link to='/courselist'>COURSES</Link>
 					</li>
 					<li className='menu-item'>
@@ -54,9 +124,9 @@ function Header() {
 					<li className='menu-item'>
 						<Link to='/cart'>
 							CART
-              {cartItemCount > 0 && (
-                <span className="cart-counter">{cartItemCount}</span>
-              )}
+							{cartItemCount > 0 && (
+								<span className='cart-counter'>{cartItemCount}</span>
+							)}
 						</Link>
 					</li>
 				</ul>

@@ -13,6 +13,7 @@ import VerifyOtp from "./components/signuplogin/VerifyOtp";
 import { ToastContainer, toast } from "react-toastify";
 import Checkout from "./components/cart/Checkout";
 import Admin from "./components/instructor/Admin";
+import Footer from "./components/footer/Footer";
 
 import { AuthProvider } from "./components/header/AuthContext";
 import { CartProvider } from "./components/cart/CartContext";
@@ -25,7 +26,8 @@ function App() {
 		<CartProvider>
 			<AuthProvider>
 		<BrowserRouter>
-			<Header />
+					<Header />
+					
 
 			<Routes>
 				<Route path='header' element={<Header cart={cart} />} />
@@ -48,7 +50,9 @@ function App() {
 
 				<Route path='cart' element={<Cart />} />
 
-				<Route path='/' element={<Main />} />
+						<Route path='/' element={<Main />} />
+						<Route path='footer' element={<Footer />} />
+						
 				</Routes>
 				
 			</BrowserRouter>
