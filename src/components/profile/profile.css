@@ -1,54 +1,11 @@
 
-#sidebar{
-    width: 240px;
-    height: 500px;
-    background-image: linear-gradient(to right,#f5ac82,#a11afe);
-    margin-top: 20px;
-    margin-left: 15px;
-    border: none;
-    border-radius: 15px;
-}
-
-.profilecontainer{
-    display: flex;
-}
-.profilesidebar{
-    margin-top: 15px;
-    margin-left: 15px;
-}
-.profilesidebar>li>a{
-    cursor: pointer;
-   
-}
-.navsidebaropt{
-    padding: 10px;
-    transition: 0.4s;
-   
-} 
-.navsidebaropt>a>i{
-    margin-right: 25px;
-}
-
-.sidebaropt{
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    padding-top: 10px ;
-    padding-bottom: 10px ;
-    padding-right: 45px;
-   
-}
-.navsidebaropt:hover{
-    
-    background-color: #f5ac82;
-}
 
 .mycoursehead{
     color: #f5ac82;
     font-weight: 700;
     
     margin-top: 35px;
-    margin-left: 400px;
+    /* margin-left: 400px; */
     font-size: 32px;
 }
 
@@ -59,6 +16,9 @@
     width: 150px;
     margin: 6px auto;
     
+}
+#welcomemsg{
+    color: #a11afe;
 }
 #editprofile{
     margin-top: 35px;
@@ -107,21 +67,31 @@
 }
 
 
-/* admin */
+
 #sidebar2{
     width: 240px;
-    height: 500px;
+    height: 110vh;
     background-image: linear-gradient(to right,#f5ac82,#a11afe);
     margin-top: 20px;
     margin-left: 15px;
+padding-top: 20px;
     border: none;
     border-radius: 15px;
 
 }
+.form-control{
+    width: 100vh;
+}
+.form-select{
+    width: 100vh;
+}
 .navsidebaropt2{
-    padding: 10px 5px;
-    margin-top: 20px;
+    margin: 20px 6px;
+    
     transition: 0.4s;
+    border: none;
+    border-radius: 8px;
+    
 }
 .navsidebaropt2>a>i{
     margin-right: 15px;
@@ -129,12 +99,13 @@
 
 
 .sidebaropt2{
+    display: flex;
+   align-items: center;
+  padding: 10px 15px;
     font-size: 18px;
     font-weight: 600;
     color: white;
-    padding-top: 10px ;
-    padding-bottom: 10px ;
-    padding-right: 20px;
+   
    
 }
 .navsidebaropt2:hover{

@@ -47,7 +47,7 @@ export default function ManageCourse() {
   return (
 
     <>
-     <h2 className="createcoursehead ml-4" >Uploaded Courses</h2>
+     <h2 className="createcoursehead ml-5" >Uploaded Courses</h2>
     <div className="cards flex ml-5 mt-2 flex-wrap  md:flex-row flex-col items-center " >
 
       

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import "./profile.css";
 import axios from "axios";
@@ -9,18 +8,18 @@ import EditProfile from "./EditProfile";
 import MyCourses from "./MyCourses";
 import Wishlist from "./Wishlist";
 
+import "../header/header.css";
+
 function Profile() {
 	const navigate = useNavigate();
-	const navigatecart =()=>{
-		navigate("/cart")
-	}
-
-	
+	const navigatecart = () => {
+		navigate("/cart");
+	};
 
 	// const handleLogout = () => {
 	// 	// Remove the JWT token from localStorage
 	// 	localStorage.removeItem("jwtToken");
-		
+
 	// 	console.log("Logged Out");
 	// 	toast.success("Logged Out");
 
@@ -35,73 +34,66 @@ function Profile() {
 	const switchContent = (newContent) => {
 		setContent(newContent);
 	};
-	
 
 	return (
-		<div className='profilecontainer'>
-			<ToastContainer />
-			{/* sidebar */}
-			<nav id='sidebar' className='col-md-3 col-lg-2 d-md-block  '>
-				<div className='position-sticky'>
+		<div>
+			<div id='' className='flex '>
+				<ToastContainer />
+				{/* sidebar */}
+				<nav id='sidebar2' className='col-md-3 col-lg-2 d-md-block  '>
 					<ul className='nav flex-column profilesidebar'>
-						<li className='navsidebaropt'>
-							
+						<li className='navsidebaropt2' style={{ cursor: "pointer" }}>
 							<a
-									className={`sidebaropt ${
-										content === "editprofile" ? "active" : ""
-									}`}
-									onClick={() => switchContent("editprofile")}>
-										<i class="fa-solid fa-user fa-lg "></i>
-									Edit Profile
-								</a>
+								className={`sidebaropt2 ${
+									content === "editprofile" ? "active" : ""
+								}`}
+								onClick={() => switchContent("editprofile")}>
+								<i class='fa-solid fa-user fa-lg '></i>
+								<span id="profileopt">Edit Profile</span>
+							</a>
 						</li>
-						<li className='navsidebaropt'>
-						<a
-									className={`sidebaropt ${
-										content === "mycourses" ? "active" : ""
-									}`}
-									onClick={() => switchContent("mycourses")}>
-										<i class="fa-solid fa-book fa-lg "></i>
-									My Courses
-								</a>
+						<li className='navsidebaropt2' style={{ cursor: "pointer" }}>
+							<a
+								className={`sidebaropt2 ${
+									content === "mycourses" ? "active" : ""
+								}`}
+								onClick={() => switchContent("mycourses")}>
+								<i class='fa-solid fa-book fa-lg '></i>
+								<span id="profileopt">My Courses </span>
+							</a>
 						</li>
-						<li className='navsidebaropt'>
-						<a
-									className={`sidebaropt ${
-										content === "wishlist" ? "active" : ""
-									}`}
-									onClick={() => switchContent("wishlist")}>
-										<i class="fa-solid fa-heart fa-lg "></i>
-									WishList
-								</a>
+						<li className='navsidebaropt2'>
+							<a
+								className={`sidebaropt2 ${
+									content === "wishlist" ? "active" : ""
+								}`}
+								onClick={() => switchContent("wishlist")}>
+								<i class='fa-solid fa-heart fa-lg '></i>
+								<span id="profileopt">Wishlist </span>
+							</a>
 						</li>
-						<li className='navsidebaropt'>
-							<a className=' sidebaropt' onClick={navigatecart}>
-								<i
-									class='fa-solid fa-cart-shopping fa-lg'></i>
-								My Cart
+						<li className='navsidebaropt2'>
+							<a className=' sidebaropt2' onClick={navigatecart}>
+								<i class='fa-solid fa-cart-shopping fa-lg'></i>
+								<span id="profileopt">My Cart </span> 
 							</a>
 						</li>
 
-						<li className='navsidebaropt'>
-							<a className=' sidebaropt'>
-								<i
-									class='fa-solid fa-chalkboard-user fa-lg'></i>
-								Tests
+						<li className='navsidebaropt2'>
+							<a className=' sidebaropt2'>
+								<i class='fa-solid fa-chalkboard-user fa-lg'></i>
+								<span id="profileopt">Tests </span>
 							</a>
 						</li>
-						
 					</ul>
-				</div>
-			</nav>
-			{/* main */}
-			<div className='maincontent'>
+				</nav>
+				{/* main */}
+				<div className='container'>
 					{content === "editprofile" && <EditProfile />}
 					{content === "mycourses" && <MyCourses />}
 					{content === "wishlist" && <Wishlist />}
-					
 				</div>
-			
+			</div>
 		</div>
 	);
 }

@@ -6,6 +6,10 @@ import jwtDecode from "jwt-decode";
 import { useAuth } from "../header/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+import '../header/header.css'
+
+
+
 function EditProfile() {
 	const [user, setUser] = useState({ email: "", username: "" });
 	const [newUsername, setNewUsername] = useState("");
@@ -71,7 +75,7 @@ function EditProfile() {
 				<img src='./images/profile.webp' alt='' />
 			</div>
 			<div className='usernamediv'>
-				Welcome Back,
+				<span id="welcomemsg">Welcome Back,</span>
 				<br />
 				{user.username}
 				<br />
@@ -79,7 +83,7 @@ function EditProfile() {
 			</div>
 
 			<form onSubmit={handleSaveClick} className='ml-6'>
-				<div className='mb-3'>
+				<div className='mb-3 mobilecourseinput'>
 					<label htmlFor='newUsername' className='createcourselabel'>
 						New Username
 					</label>
@@ -91,11 +95,11 @@ function EditProfile() {
 						value={newUsername}
 						onChange={(e) => setNewUsername(e.target.value)}
 						required
-						style={{ width: "800px" }}
+						
 						placeholder='Update Username'
 					/>
 				</div>
-				<div className='mb-3'>
+				<div className='mb-3 mobilecourseinput'>
 					<label htmlFor='newEmail' className='createcourselabel'>
 						New Email
 					</label>
@@ -107,7 +111,7 @@ function EditProfile() {
 						value={newEmail}
 						onChange={(e) => setNewEmail(e.target.value)}
 						required
-						style={{ width: "800px" }}
+						
 						placeholder='Update Email'
 					/>
 				</div>

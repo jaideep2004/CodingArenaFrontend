@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 30px 50px;
     background-image: linear-gradient(to right,#f5ac82,#a11afe);
+    
     /* margin-bottom: 18px; */
     /* height: 490px; */
     
@@ -73,7 +74,8 @@
   .hero-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border: none;
+    border-radius: 12px;
   }
   
   .hero-section {

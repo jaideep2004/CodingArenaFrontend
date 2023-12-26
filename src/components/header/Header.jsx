@@ -32,30 +32,31 @@ function Header() {
 	};
 	const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
-  };
+	const toggleVisibility = () => {
+		setIsVisible(!isVisible);
+	};
 
-  const [isIconVisible, setIsIconVisible] = useState(false);
+	const [isIconVisible, setIsIconVisible] = useState(false);
 
-  const toggleIcon = () => {
-    setIsIconVisible(!isIconVisible);
+	const toggleIcon = () => {
+		setIsIconVisible(!isIconVisible);
 	};
 
 	const handleButtonClick = () => {
 		toggleVisibility();
 		toggleIcon();
 		// Add any other functions you want to call here
-	  };
-	
-	  const handleLinkClick = () => {
+	};
+
+	const handleLinkClick = () => {
 		// Close the menu when a link is clicked
 		setIsVisible(false);
-	  };
+		setIsIconVisible(false);
+	};
 
 	return (
 		<header className='shadow-sm'>
-			<Link to='/' >
+			<Link to='/'>
 				<div className='logo'>
 					<img src='./images/logo3.png' alt='' />
 					<div className='logoname'>CODING ARENA</div>
@@ -63,51 +64,68 @@ function Header() {
 			</Link>
 
 			{/* mobile menu icon */}
-			<div onClick={handleButtonClick} >
+			<div onClick={handleButtonClick}>
 				{/* <i id='mobilemenuicon' class='fa-solid fa-bars fa-xl' ></i> */}
-				{isIconVisible ? <i id='mobilemenuicon' class='fa-solid fa-circle-xmark fa-2xl'></i> : <i id='mobilemenuicon' class='fa-solid fa-bars fa-2xl'></i>}
-</div>
-			
-			
-			 {isVisible && <div className='mobilemenu'>
-				<ul className='mobilemenuitems'>
-					<li onClick={handleLinkClick}><Link to='/'>HOME</Link></li>
-					<li onClick={handleLinkClick}><Link to='/courselist'>COURSES</Link></li>
-					<li onClick={handleLinkClick}><Link to='admin'>INSTRUCTOR</Link></li>
-					<li onClick={handleLinkClick}><Link to='/cart'>
-							CART
-							{cartItemCount > 0 && (
-								<span className='cart-counter'>{cartItemCount}</span>
+				{isIconVisible ? (
+					<i id='mobilemenuicon' class='fa-solid fa-circle-xmark fa-2xl'></i>
+				) : (
+					<i id='mobilemenuicon' class='fa-solid fa-bars fa-2xl'></i>
+				)}
+			</div>
+
+			{isVisible && (
+				<div className='mobilemenu'>
+					<ul className='mobilemenuitems'>
+						<li onClick={handleLinkClick}>
+							<Link to='/'>HOME</Link>
+						</li>
+						<li onClick={handleLinkClick}>
+							<Link to='/courselist'>COURSES</Link>
+						</li>
+						<li onClick={handleLinkClick}>
+							<Link to='admin'>INSTRUCTOR</Link>
+						</li>
+						<li onClick={handleLinkClick}>
+							<Link to='/cart'>
+								CART
+								{cartItemCount > 0 && (
+									<span className='cart-counter'>{cartItemCount}</span>
+								)}
+							</Link>
+						</li>
+						<div className='mobilebuttons'>
+							{isLoggedIn ? (
+								<>
+									<Link to='profile'>
+										<img
+											
+											className='headerprofile '
+											src='./images/profile.webp'
+											alt='Profile'
+											onClick={handleLinkClick}
+											  
+										/>
+									</Link>
+									<div onClick={handleLinkClick}>
+									<button onClick={handleLogout} className='mobbutton'
+									>
+										Logout
+									</button></div>
+								</>
+							) : (
+								<>
+									<Link to='signup' onClick={handleLinkClick}>
+										<button className='mobbutton'>Sign Up</button>
+									</Link>
+									<Link to='login' onClick={handleLinkClick}>
+										<button className='mobbutton'>Login</button>
+									</Link>
+								</>
 							)}
-						</Link></li>
-					<div className='mobilebuttons'>
-					{isLoggedIn ? (
-						<>
-							<Link to='profile'>
-								<img
-									className='headerprofile'
-									src='./images/profile.webp'
-									alt='Profile'
-								/>
-							</Link>
-							<button onClick={handleLogout} className='button'>
-								Logout
-							</button>
-						</>
-					) : (
-						<>
-							<Link to='signup' onClick={handleLinkClick}>
-								<button className='mobbutton'>Sign Up</button>
-							</Link>
-							<Link to='login' onClick={handleLinkClick}>
-								<button className='mobbutton'>Login</button>
-							</Link>
-						</>
-					)}
+						</div>
+					</ul>
 				</div>
-				</ul>
-				
-			</div>}
+			)}
 
 			{/* laptop menu */}
 			<nav>
@@ -136,7 +154,7 @@ function Header() {
 					<>
 						<Link to='profile'>
 							<img
-								className='headerprofile'
+								className='headerprofile button'
 								src='./images/profile.webp'
 								alt='Profile'
 							/>

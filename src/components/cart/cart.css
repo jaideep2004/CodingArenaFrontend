@@ -8,3 +8,10 @@
     border: none;
     border-radius: 10px;
 }
+#cartsection{
+    margin-left: 40px;
+    width: 650px;
+}
+#checkoutsection{
+    width: 500px;
+}

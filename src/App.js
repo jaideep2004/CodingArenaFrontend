@@ -14,7 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Checkout from "./components/cart/Checkout";
 import Admin from "./components/instructor/Admin";
 import Footer from "./components/footer/Footer";
-
+ 
 import { AuthProvider } from "./components/header/AuthContext";
 import { CartProvider } from "./components/cart/CartContext";
 

@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
+import '../header/header.css'
+
+
 function UpdateCourse({ onUpdate }) {
   const [selectedCourseTitle, setSelectedCourseTitle] = useState("");
   const [courseData, setCourseData] = useState({
@@ -82,10 +85,10 @@ function UpdateCourse({ onUpdate }) {
 
   return (
     <>
-      <h2 className="createcoursehead ml-4">Update Course</h2>
+      <h2 className="createcoursehead ml-5">Update Course</h2>
       <ToastContainer/>
       <form onSubmit={handleUpdate} className='ml-5'>
-        <div className="mb-3">
+        <div className="mb-3 mobilecourseinput" >
           <label htmlFor="courseTitle" className="form-label">
             Select a course to Update
           </label>
@@ -96,7 +99,7 @@ function UpdateCourse({ onUpdate }) {
             value={selectedCourseTitle}
             onChange={handleSelectChange}
             required
-            style={{width:'800px'}}
+            
           >
             <option value="" disabled>
               Select a course

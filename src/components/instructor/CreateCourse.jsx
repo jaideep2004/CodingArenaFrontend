@@ -3,6 +3,11 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
+import '../header/header.css'
+
+
+
+
 function CreateCourse() {
 	const [courseData, setCourseData] = useState({
 		cname: "",
@@ -146,9 +151,9 @@ const [videoPreview, setVideoPreview] = useState(null);
 	return (
 		<div>
 			<div>
-				<h2 className='createcoursehead ml-4'>Create Course</h2>
+				<h2 className='createcoursehead ml-5'>Create Course</h2>
 				<form onSubmit={handleSubmit} className='ml-5'>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput' >
 						<label htmlFor='title' className='createcourselabel'>
 							Instructor Name
 						</label>
@@ -160,10 +165,10 @@ const [videoPreview, setVideoPreview] = useState(null);
 							value={courseData.cname}
 							onChange={handleChange}
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='title' className='createcourselabel'>
 							Title
 						</label>
@@ -175,10 +180,10 @@ const [videoPreview, setVideoPreview] = useState(null);
 							value={courseData.title}
 							onChange={handleChange}
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='description' className='createcourselabel'>
 							Description
 						</label>
@@ -189,9 +194,9 @@ const [videoPreview, setVideoPreview] = useState(null);
 							value={courseData.description}
 							onChange={handleChange}
 							required
-							style={{ width: "800px" }}></textarea>
+							></textarea>
 					</div>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='price' className='createcourselabel'>
 							Price
 						</label>
@@ -203,10 +208,10 @@ const [videoPreview, setVideoPreview] = useState(null);
 							value={courseData.price}
 							onChange={handleChange}
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='image' className='createcourselabel'>
 							Course Image
 						</label>
@@ -225,11 +230,11 @@ const [videoPreview, setVideoPreview] = useState(null);
 							onChange={handleImageChange}
 							accept='image/*'
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
 
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='pdf' className='createcourselabel'>
 							Upload PDF
 						</label>
@@ -246,10 +251,10 @@ const [videoPreview, setVideoPreview] = useState(null);
 							onChange={handlePdfChange}
 							accept='.pdf'
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
-					<div className='mb-3'>
+					<div className='mb-3 mobilecourseinput'>
 						<label htmlFor='video' className='createcourselabel'>
 							Upload Video
 						</label>
@@ -270,7 +275,7 @@ const [videoPreview, setVideoPreview] = useState(null);
 							onChange={handleVideoChange}
 							accept='video/*'
 							required
-							style={{ width: "800px" }}
+							
 						/>
 					</div>
 

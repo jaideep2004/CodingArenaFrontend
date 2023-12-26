@@ -42,7 +42,7 @@ export default function Wishlist() {
 
 	return (
 		<div>
-			<h2 className='mycoursehead '>Wishlist</h2>
+			<h2 className='mycoursehead ml-8'>Wishlist</h2>
 			<div className=" wishitemcontainer">
 				<ul className='flex flex-col  '>
 					{wishlist.length === 0 ? (

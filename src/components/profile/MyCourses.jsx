@@ -26,7 +26,7 @@ export default function MyCourses() {
 
 	return (
 		<div>
-			<h2 className='mycoursehead '>My Courses</h2>
+			<h2 className='mycoursehead ml-8 '>My Courses</h2>
 
 			<div className="cards flex justify-center my-4 ml-5 flex-wrap  md:flex-row flex-col items-center">
 				{orders.map((order) => (

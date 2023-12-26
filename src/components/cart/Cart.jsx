@@ -3,6 +3,8 @@ import axios from "axios";
 import CartItem from "./CartItem";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import "../header/header.css";
+
 
 
 function Cart() {
@@ -88,13 +90,14 @@ function Cart() {
 				}}>
 				Shopping Cart
 			</h1>
-			<div className='flex mt-2'>
+			<div className='flex mt-2' id="cartcontain">
 				{/* cart section */}
 
 				<div
+					id="cartsection"
 					className='flex flex-col  p-4  '
-					style={{ marginLeft: "40px", width: "650px" }}>
-					<ul className='flex flex-col divide-y divide-gray-700'>
+					>
+					<ul id="orderitems" className='flex flex-col divide-y divide-gray-700'>
 						{cart.length === 0 ? (
 							<p>Your cart is empty.</p>
 						) : (
@@ -140,7 +143,8 @@ function Cart() {
 				</div>
 
 				{/* order item section */}
-				<div class='flex flex-col  p-4 ' style={{ marginLeft: "120px" }}>
+				<div class='flex flex-col  p-4 'id="checkoutsection"
+					>
 					<div class='container mx-auto'>
 						<div class='bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-left'>
 							<div class='text-gray-700 font-bold py-1'>Total: ₹ {total} </div>
